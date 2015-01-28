@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<title>paulcohn.net</title>
+<style>
+body {
+    background-image: url('star.jpg');
+    text-align: center;
+}
+
+h1, h2, h3, p, a, marquee{
+    color: white;
+}
+
+marquee {
+   font-size: 20px; 
+}
+
+img {
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+div#bananadiv {
+    height: 200px;
+    line-height:200px;
+}
+</style>
+</head>
+<body>
+<h1>Paul Cohn's Homepage</h2>
+
+<p>Hello, my name is Paul. Follow me on <a href="http://twitter.com/paulsterr">Twitter.</a></p>
+<div id="bananadiv">
+    <a id="banana">See Banana</a>
+</div>
+<img style="display: none" id="b" src="dancing-banana.gif" />
+<script type="text/javascript">
+var label = document.getElementById('banana');
+var im = document.getElementById('b');
+var div = document.getElementById('bananadiv');
+label.onclick = function(){
+    div.style.display = 'none';
+    im.style.display = 'block';
+};
+</script>
+</body>
+</html>
+
+
