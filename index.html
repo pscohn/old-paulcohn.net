@@ -39,16 +39,24 @@ div#bananadiv {
 
 <p>Hey, I'm Paul. There's not much to do here but you can follow me on <a href="http://twitter.com/paulsterr">Twitter.</a></p>
 <div id="bananadiv">
-    <a id="banana">See Banana</a>
+    <a id="banana">See Banana</a> | <a id="limbo">See Limbo</a>
 </div>
 <img style="display: none" id="b" src="dancing-banana.gif" />
+<img style="display: none" id="l" src="limbo.gif" />
 <script type="text/javascript">
 var label = document.getElementById('banana');
 var im = document.getElementById('b');
 var div = document.getElementById('bananadiv');
+var limbo = document.getElementById('limbo');
+var l = document.getElementById('l');
 label.onclick = function(){
     div.style.display = 'none';
     im.style.display = 'block';
+};
+
+limbo.onclick = function() {
+    div.style.display = 'none';
+    l.style.display: 'block';
 };
 </script>
 </body>
