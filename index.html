@@ -6,6 +6,7 @@
 body {
     background-image: url('star.jpg');
     text-align: center;
+    font-color: white;
 }
 
 h1, h2, h3, p, a, marquee{
@@ -40,7 +41,7 @@ div#bananadiv {
 
 <p>Hey, I'm Paul. There's not much to do here but you can follow me on <a href="http://twitter.com/paulsterr">Twitter.</a></p>
 <div id="bananadiv">
-    <a id="banana">See Banana</a> | <a id="limbo">See Limbo</a>
+    <p><a id="banana">See Banana</a> | <a id="limbo">See Limbo</a></p>
 </div>
 <img style="display: none" id="b" src="dancing-banana.gif" />
 <img style="display: none" id="l" src="limbo.gif" />
@@ -57,7 +58,7 @@ label.onclick = function(){
 
 limbo.onclick = function() {
     div.style.display = 'none';
-    l.style.display: 'block';
+    l.style.display = 'block';
 };
 </script>
 </body>
