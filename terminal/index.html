@@ -9,6 +9,10 @@
     font-size: 1.03em;
 }
 
+p {
+    margin: 0;
+}
+
 form {
     display:inline;
 }
@@ -25,6 +29,7 @@ ul, li {
     top: 0px;
     left: 0px;
     overflow: scroll;
+    margin-top: 2px;
 }
 
 #input-bar {
@@ -54,15 +59,36 @@ ul, li {
 <div id="input-bar"><span id="ps1">paulcohn.net/terminal $ </span><form id="form"><input id="input" type="text" /></form></div>
 <script>
 var ps1 = 'paulcohn.net/terminal $ '
+var folders = {
+    '/': {
+        'Projects': {},
+        'Games': {},
+    }
+}
+var current = folders['/'];
+var messages = {
+    'help': '<p>Not much to do here yet.</p>',
+    'hi': '<p>Hello.</p>',
+    'hello': '<p>Hi there.</p>',
+    'wef': '<p>Easy for you to say.</p>',
+    'asdf': '<p>Easy for you to say.</p>',
+}
 var parseInput = function(input) {
-    $('#scroll').append('<li>' + ps1 + input + '</li>');
+    var message = '<li>' + ps1 + input + '</li>';
+    if (messages.hasOwnProperty(input)) {
+        message += messages[input];
+    } else if (input == 'ls') {
+        for (var key in current) {
+            message += '<li>' + key + '</li>';
+        }
+    }
+    $('#scroll').append(message);
 };
-
 $('#form').submit(function(e) {
     e.preventDefault();
     var input = $('#input').val();
     $('#input').val('');
-    parseInput(input);
+    parseInput(input.toLowerCase());
 });
 </script>
 </body>
