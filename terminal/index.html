@@ -56,13 +56,17 @@ ul, li {
 </head>
 <body>
 <ul id="scroll"></ul>
-<div id="input-bar"><span id="ps1">paulcohn.net/terminal $ </span><form id="form"><input id="input" type="text" /></form></div>
+<div id="input-bar"><span id="ps1">paulcohn.net $ </span><form id="form"><input id="input" type="text" /></form></div>
 <script>
-var ps1 = 'paulcohn.net/terminal $ '
+var ps1 = 'paulcohn.net $ '
 var folders = {
     '/': {
         'Projects': {},
         'Games': {},
+        'Links': {},
+        'Resume': {},
+        'Contact': {},
+        'Blog': {},
     }
 }
 var current = folders['/'];
@@ -81,6 +85,8 @@ var parseInput = function(input) {
         for (var key in current) {
             message += '<li>' + key + '</li>';
         }
+    } else {
+        message += '<li>paulcohn.net: ' + input + ': command not found. use `help` for command list</li>';
     }
     $('#scroll').append(message);
 };
@@ -89,6 +95,16 @@ $('#form').submit(function(e) {
     var input = $('#input').val();
     $('#input').val('');
     parseInput(input.toLowerCase());
+});
+$('#input').focus();
+$(document).click(function() {
+    if (typeof window.getSelection != 'undefined') {
+        var text = window.getSelection().toString();
+        if (text !== '') {
+            return;
+        }
+        $('#input').focus();
+    }
 });
 </script>
 </body>
