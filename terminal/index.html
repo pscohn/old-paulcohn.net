@@ -23,22 +23,13 @@ ul, li {
 }
 
 #scroll {
-    padding-left: 5px;
-    height: 95%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    overflow: scroll;
-    margin-top: 2px;
+    margin: 0;
+    line-height: 1.3em;
+    font-size: 1.1em;
 }
 
 #input-bar {
-    position: fixed;
-    width: 100%;
-    height: 5%;
-    bottom: 0px;
-    left: 0px;
-    padding-left: 5px;
+    font-size: 1.09em;
 }
 
 #input {
@@ -56,56 +47,7 @@ ul, li {
 </head>
 <body>
 <ul id="scroll"></ul>
-<div id="input-bar"><span id="ps1">paulcohn.net $ </span><form id="form"><input id="input" type="text" /></form></div>
-<script>
-var ps1 = 'paulcohn.net $ '
-var folders = {
-    '/': {
-        'Projects': {},
-        'Games': {},
-        'Links': {},
-        'Resume': {},
-        'Contact': {},
-        'Blog': {},
-    }
-}
-var current = folders['/'];
-var messages = {
-    'help': '<p>Not much to do here yet.</p>',
-    'hi': '<p>Hello.</p>',
-    'hello': '<p>Hi there.</p>',
-    'wef': '<p>Easy for you to say.</p>',
-    'asdf': '<p>Easy for you to say.</p>',
-}
-var parseInput = function(input) {
-    var message = '<li>' + ps1 + input + '</li>';
-    if (messages.hasOwnProperty(input)) {
-        message += messages[input];
-    } else if (input == 'ls') {
-        for (var key in current) {
-            message += '<li>' + key + '</li>';
-        }
-    } else {
-        message += '<li>paulcohn.net: ' + input + ': command not found. use `help` for command list</li>';
-    }
-    $('#scroll').append(message);
-};
-$('#form').submit(function(e) {
-    e.preventDefault();
-    var input = $('#input').val();
-    $('#input').val('');
-    parseInput(input.toLowerCase());
-});
-$('#input').focus();
-$(document).click(function() {
-    if (typeof window.getSelection != 'undefined') {
-        var text = window.getSelection().toString();
-        if (text !== '') {
-            return;
-        }
-        $('#input').focus();
-    }
-});
-</script>
+<div id="input-bar"><span id="ps1">paulcohn.net:<span id="location">home</span> $ </span><form id="form"><input id="input" type="text" /></form></div>
+<script src="index.js"></script>
 </body>
 </html>
